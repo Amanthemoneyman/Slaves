@@ -11,27 +11,35 @@ public class Strengths {
 
     public Strengths(int Mining, int Farming, int Stealing)
     {
-        if(Mining <= 100)
+        if(isValid(Mining))
         {
-            mining = Mining;
-            if(Farming <= 100)
+            if(isValid(Farming))
             {
-                farming = Farming;
-                if(Stealing <= 100)
+                if(isValid(Stealing))
                 {
-                    stealing = Stealing;
+
                 } else
                 {
 
-
-
                 }
-
             }
-
-
         }
 
+
+    }
+
+    private boolean isValid(int MiningFarmingStealing)
+    {
+        if(MiningFarmingStealing > 1)
+        {
+            if(MiningFarmingStealing <= 100)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        return false;
 
     }
 }
