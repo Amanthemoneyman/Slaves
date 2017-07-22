@@ -16,13 +16,22 @@ public class Slave {
     private UUID owner;
     private String name;
     private UUID uuid;
-    private int pricePaid;
+    private int pricePaid; private int sellPrice;
     private boolean forAuction;
     private Strengths strengths;
 
 
-
-    public Slave(UUID PlayerOwner, String SlaveName, UUID SlaveUuid, int PricePaid, boolean ForAuction, Strengths Strgths)
+    /**
+     *
+     * @param PlayerOwner - The slave owner
+     * @param SlaveName - The name of the slave
+     * @param SlaveUuid - The slave's UUID
+     * @param PricePaid - The price paid by the owner of the slave
+     * @param SellPrice - The price that the slave is up for in auction
+     * @param ForAuction - If the slave is in auction or not
+     * @param Strgths - The strengths class that holds the values for the different levels of strengths that the slave holds
+     */
+    public Slave(UUID PlayerOwner, String SlaveName, UUID SlaveUuid, int PricePaid, int SellPrice, boolean ForAuction, Strengths Strgths)
 
     {
         owner = PlayerOwner;
@@ -31,10 +40,16 @@ public class Slave {
         pricePaid = PricePaid;
         forAuction = ForAuction;
         strengths = Strgths;
+        sellPrice = SellPrice;
 
 
     }
 
-    //public Slave(UUID PlayerOwner, String SlaveName, UUID SlaveUuid, )
+    public Slave(UUID PlayerOwner, String SlaveName, UUID SlaveUuid, int PricePaid, int SellPrice, boolean ForAuction)
+    {
+
+
+
+    }
 
 }

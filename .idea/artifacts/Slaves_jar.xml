@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Slaves.jar">
+    <output-path>$USER_HOME$/Desktop/Coding/Server Jars/Server/plugins</output-path>
+    <root id="archive" name="Slaves.jar">
+      <element id="module-output" name="Slaves" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/Coding/Server Jars/Server/spigot-1.12.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

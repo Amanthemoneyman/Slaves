@@ -1,7 +1,9 @@
 package me.amanthemoneyman.Slaves.Utils.Configuration;
 
 import me.amanthemoneyman.Slaves.Slaves;
+import me.amanthemoneyman.Slaves.Utils.Utilities;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -12,10 +14,99 @@ public class FileManager {
     private Slaves plugin;
     private ArrayList<PluginFile> files;
 
-    public FileManager(Slaves slaves)
-    {
+    public FileManager(Slaves slaves) {
         this.plugin = slaves;
+        files = new ArrayList<PluginFile>();
+        if(!plugin.getDataFolder().exists())
+        {
+            plugin.getDataFolder().mkdir();
+        }
+
+        Utilities.debug("Loading server fileeeeeeeeeeeeeeeeeeeeeeees");
+        loadFiles();
+
+
+
     }
 
+    public void loadFiles() {
 
+        File[] files = plugin.getDataFolder().listFiles();
+
+        for(File f: files)
+        {
+            if(f == null)
+            {
+                Utilities.debug("File " + f.getName() + " Is null");
+            }
+            if(plugin == null)
+            {
+
+                Utilities.debug("Plugin is null");
+
+            }
+            PluginFile pf = new PluginFile(f, plugin);
+            this.files.add(pf);
+            Utilities.debug(" Loaded file : " + pf.getName());
+
+
+        }
+
+
+    }
+
+    public ArrayList<PluginFile> getFiles()
+    {
+        return this.files;
+    }
+
+    public File getFile(String name) {
+        for (File f : files) {
+            if (f.getName().equalsIgnoreCase(name)) {
+                return f;
+            }
+            if (f.getName().split(".")[0].equalsIgnoreCase(name)) {
+                return f;
+            }
+            if (f.getName().split(".")[0].equalsIgnoreCase(name.split(".")[0])) {
+                return f;
+            }
+
+
+        }
+        return null;
+    }
+
+    public boolean isFile(String name)
+    {
+        for(PluginFile f : getFiles())
+        {
+            if(f.getName().equalsIgnoreCase(name))
+            {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public boolean isFile(PluginFile pf)
+    {
+        if(getFiles().contains(pf)) return true;
+        return false;
+
+
+    }
+
+    public FileManager addFile(PluginFile pf)
+    {
+        if(isFile(pf))
+        {
+            return this;
+        }
+        files.add(pf);
+        return this;
+
+
+    }
 }

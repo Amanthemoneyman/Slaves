@@ -1,38 +1,124 @@
 package me.amanthemoneyman.Slaves.Utils.Configuration;
 
 import me.amanthemoneyman.Slaves.Slaves;
-import org.apache.logging.log4j.core.config.plugins.PluginConfiguration;
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.Configuration;
+import me.amanthemoneyman.Slaves.Utils.Utilities;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
-import javax.annotation.processing.FilerException;
 import java.io.File;
 import java.io.IOException;
 
 /**
  * Created by Administrator on 7/14/2017.
  */
-public class PluginFile {
+public class PluginFile extends File{
 
-    private File file;
-    private FileConfiguration config;
-    private FileType type;
-    private String name;
-    private Slaves plugin;
-    private boolean loaded = false;
-    public PluginFile(String fileName, FileType ftype, File pluginFile, Slaves plugin)
+    protected FileConfiguration config;
+    protected FileType type;
+    protected Slaves plugin;
+    private FileManager fm;
+
+    public PluginFile(File pluginFile, Slaves plugin)
     {
+        super(plugin.getDataFolder(),pluginFile.getName());
         this.plugin = plugin;
-        if(!pluginFile.exists()) {
+        this.fm = plugin.getFileManager();
+        if (!this.exists()) {
             try {
-                this.plugin.getConfig().save(file);
-            } catch (IOException e) {
+                if (!this.getName().endsWith(".yml")) {
 
+                    if(this.getName().endsWith(".txt"))
+                    {
+                        type = FileType.TXT;
+                    } else { type = FileType.OTHER; }
+                    mkdir();
+                } else {
+                    createNewFile();
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
+        if (this.getName().endsWith(".yml"))
+        {
+            type = FileType.YML;
+            loadFileConfiguration();
+            this.saveFile();
+        }
 
+    }
+
+    public PluginFile(String fileName, Slaves plugin)
+    {
+        super(plugin.getDataFolder(),fileName);
+        this.plugin = plugin;
+        this.fm = plugin.getFileManager();
+        if (!this.exists()) {
+            try {
+                if (!this.getName().endsWith(".yml")) {
+
+                    if(this.getName().endsWith(".txt"))
+                    {
+                        type = FileType.TXT;
+                    } else { type = FileType.OTHER; }
+                    mkdir();
+                } else {
+                    createNewFile();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (this.getName().endsWith(".yml"))
+            type = FileType.YML;
+        this.loadFileConfiguration();
+        this.saveFile();
+
+    }
+
+
+    public void saveFile()
+    {
+        try {
+            this.config.save(this);
+            Utilities.debug(this.getName() + " has been saved");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void loadFileConfiguration()
+    {
+        if(this.getType() == FileType.YML) {
+            try {
+
+                config = YamlConfiguration.loadConfiguration(this);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+
+            }
+        }
+
+
+
+    }
+
+    public FileType getType()
+    { return this.type; }
+
+    private void addToManager()
+    {
+        this.plugin.getFileManager().addFile(this);
+
+
+    }
+
+    public FileConfiguration getConfig() {
+        return config;
     }
 }

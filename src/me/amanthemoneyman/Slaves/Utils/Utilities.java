@@ -4,7 +4,6 @@ import me.amanthemoneyman.Slaves.Slaves;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -24,9 +23,25 @@ public class Utilities {
 
     }
 
-    public static void debug(String str)
+    public static void error(String str)
     {
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', Slaves.prefix + "&4ERROR : " + str));
+
+
+    }
+
+    public static void debug(String str)
+    {
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', Slaves.prefix  + "&4DEBUG : " + str));
+    }
+
+    public static boolean isMultipleOf(int multiple, int check)
+    {
+        if(multiple/check == 0)
+        {
+            return true;
+        }
+        return false;
 
 
     }

@@ -5,5 +5,5 @@ package me.amanthemoneyman.Slaves.Utils.Configuration;
  */
 public enum FileType {
 
-    YML,TXT
+    YML,TXT,OTHER
 }

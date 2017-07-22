@@ -1,6 +1,8 @@
 package me.amanthemoneyman.Slaves;
 
 import me.amanthemoneyman.Slaves.SlavesClasses.Managers.SlaveTracker;
+import me.amanthemoneyman.Slaves.Utils.Configuration.FileManager;
+import me.amanthemoneyman.Slaves.Utils.InventoryAPI.PlayerMenuManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -36,10 +38,14 @@ public class Slaves extends JavaPlugin {
 
 
     }
-    public SlaveTracker st;
+    public SlaveTracker st; public SlaveTracker getSlaveTracker() { return st;}
+    public FileManager fm; public FileManager getFileManager() { return fm; }
+    public PlayerMenuManager pmm; public PlayerMenuManager getPlayerMM() { return pmm;}
 
     private void loadClasses(){
         st = new SlaveTracker(this);
+        fm = new FileManager(this);
+        pmm = new PlayerMenuManager(this);
 
 
 

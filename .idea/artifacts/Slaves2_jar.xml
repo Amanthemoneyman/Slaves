@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="Slaves2.jar">
+    <output-path>$USER_HOME$/Desktop/Coding/Server Jars/Server/plugins</output-path>
+    <root id="root">
+      <element id="archive" name="Slaves.jar">
+        <element id="module-output" name="Slaves" />
+      </element>
+    </root>
+  </artifact>
+</component>
