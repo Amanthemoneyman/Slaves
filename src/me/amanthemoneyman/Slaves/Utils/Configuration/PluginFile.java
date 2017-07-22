@@ -64,7 +64,7 @@ public class PluginFile extends File{
                     } else { type = FileType.OTHER; }
                     mkdir();
                 } else {
-                    createNewFile();
+                      createNewFile();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
