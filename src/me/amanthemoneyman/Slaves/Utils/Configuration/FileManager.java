@@ -45,7 +45,7 @@ public class FileManager {
                 Utilities.debug("Plugin is null");
 
             }
-            PluginFile pf = new PluginFile(f, plugin);
+             PluginFile pf = new PluginFile(f, plugin);
             this.files.add(pf);
             Utilities.debug(" Loaded file : " + pf.getName());
 

@@ -1,6 +1,5 @@
 package me.amanthemoneyman.Slaves.SlavesClasses.Managers;
 
-import com.sun.prism.Material;
 import me.amanthemoneyman.Slaves.Slaves;
 import me.amanthemoneyman.Slaves.SlavesClasses.Slave;
 
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 public class SlaveTracker {
 
     private Slaves plugin;
-    private ArrayList<Slave> slaves;
+     private ArrayList<Slave> slaves;
     public SlaveTracker(Slaves slaves)
     {
         plugin = slaves;

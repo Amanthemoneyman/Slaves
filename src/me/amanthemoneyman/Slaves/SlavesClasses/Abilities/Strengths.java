@@ -36,7 +36,7 @@ public class Strengths {
             {
                 return true;
             }
-            return false;
+             return false;
         }
 
         return false;
