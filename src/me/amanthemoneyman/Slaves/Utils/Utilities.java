@@ -1,9 +1,12 @@
 package me.amanthemoneyman.Slaves.Utils;
 
 import me.amanthemoneyman.Slaves.Slaves;
+import me.amanthemoneyman.Slaves.SlavesClasses.Slave;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -45,6 +48,44 @@ public class Utilities {
 
 
     }
+
+    public static boolean isValidInventorySize(int size)
+    {
+        if(size <= 55)
+        {
+            if(size+1/9 == 0)
+            {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public static List<String> slaveToLore(Slave s) {
+        /* Slave Lore Format???
+           Name : Bob
+           Owner : Alex
+           Mining : 22
+           Farming : 80
+           Stealing : 10
+
+           Price :
+
+         */
+        List<String> lore = new ArrayList<String>();
+        lore.add(ChatColor.GRAY + "Name : " + ChatColor.BLUE + s.getName() + "\n");
+        lore.add(ChatColor.GRAY + "Owner : " + ChatColor.BLUE + Bukkit.getPlayer(s.getOwner()).getName()+ "\n");
+        lore.add(ChatColor.GRAY + "Mining : " + ChatColor.BLUE + s.getStrengths().getMining()+ "\n");
+        lore.add(ChatColor.GRAY + "Farming : " + ChatColor.BLUE + s.getStrengths().getFarming()+ "\n");
+        lore.add(ChatColor.GRAY + "Stealing : " + ChatColor.BLUE + s.getStrengths().getStealing()+ "\n");
+        lore.add(ChatColor.GREEN + "Price : " + ChatColor.WHITE + s.getSellPrice()+ "\n");
+
+        return lore;
+    }
+
+
+
 
 
 }

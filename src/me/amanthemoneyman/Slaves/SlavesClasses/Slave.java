@@ -52,4 +52,60 @@ public class Slave {
 
     }
 
+    public void setOwner(UUID owner) {
+        this.owner = owner;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setPricePaid(int pricePaid) {
+        this.pricePaid = pricePaid;
+    }
+
+    public void setSellPrice(int sellPrice) {
+        this.sellPrice = sellPrice;
+    }
+
+    public void setForAuction(boolean forAuction) {
+        this.forAuction = forAuction;
+    }
+
+    public void setStrengths(Strengths strengths) {
+        this.strengths = strengths;
+    }
+
+    public UUID getOwner() {
+
+        return owner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public int getPricePaid() {
+        return pricePaid;
+    }
+
+    public int getSellPrice() {
+        return sellPrice;
+    }
+
+    public boolean isForAuction() {
+        return forAuction;
+    }
+
+    public Strengths getStrengths() {
+        return strengths;
+    }
 }

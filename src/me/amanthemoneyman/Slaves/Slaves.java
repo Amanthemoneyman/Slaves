@@ -3,7 +3,6 @@ package me.amanthemoneyman.Slaves;
 import me.amanthemoneyman.Slaves.SlavesClasses.Managers.SlaveTracker;
 import me.amanthemoneyman.Slaves.Utils.Configuration.FileManager;
 import me.amanthemoneyman.Slaves.Utils.InventoryAPI.PlayerMenuManager;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,7 +27,6 @@ public class Slaves extends JavaPlugin {
     public void onEnable()
     {
         loadClasses();
-        Bukkit.getServer();
 
 
     }

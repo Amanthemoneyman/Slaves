@@ -24,6 +24,7 @@ public abstract class MenuButton {
     public MenuButton(String name, String... lores)
     {
         this.name = name;
+
         for(String s : lores)
         {
             this.lore.add(s);
@@ -31,8 +32,6 @@ public abstract class MenuButton {
 
 
     }
-
-    public abstract void onClick(InventoryClickEvent e);
 
     /**
      *
@@ -46,6 +45,8 @@ public abstract class MenuButton {
 
 
     }
+
+    public abstract void onClick(InventoryClickEvent e);
 
     public String getName()
     {

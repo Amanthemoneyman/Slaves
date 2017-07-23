@@ -37,14 +37,14 @@ public class PlayerMenu implements Listener{
 
     public PlayerMenu size(int i)
     {
-        if(Utilities.isMultipleOf(9, i))
+        if(Utilities.isMultipleOf(8, i))
         {
             this.size = size;
 
 
         } else
         {
-            Utilities.error(i + " Is not a multiple of 9 \n Error while setting size of menu : " + name);
+            Utilities.error(i + " Is not a possible inventory size \n Error while setting size of menu : " + name);
 
 
         }
@@ -161,6 +161,13 @@ public class PlayerMenu implements Listener{
         }
 
 
+    }
+
+    public int getAvailableSpace()
+    {
+
+
+        return this.getSize()-this.getMenuButtons().size();
     }
 
 
