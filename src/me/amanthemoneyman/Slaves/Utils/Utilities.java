@@ -84,6 +84,18 @@ public class Utilities {
         return lore;
     }
 
+    public static int getMaxInventorySize(Integer rows)
+    {
+
+        if(rows > 6)
+        {
+            throw new ArrayIndexOutOfBoundsException("Valid number of rows is equal to or less than 6");
+        }
+        return (9*rows)-1;
+
+
+    }
+
 
 
 

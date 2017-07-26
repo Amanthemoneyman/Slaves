@@ -3,10 +3,12 @@ package me.amanthemoneyman.Slaves.Utils.InventoryAPI;
 import me.amanthemoneyman.Slaves.Slaves;
 import me.amanthemoneyman.Slaves.Utils.Utilities;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -27,7 +29,8 @@ public class PlayerMenu implements Listener{
 
     public PlayerMenu(String name, Slaves plug)
     {
-        this.name = name;
+
+        this.name = ChatColor.translateAlternateColorCodes('&', name);
         this.menuButtons = new HashMap<Integer, MenuButton>();
         this.plugin = plug;
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
@@ -67,6 +70,25 @@ public class PlayerMenu implements Listener{
 
     }
 
+    public boolean isViewing(String player)
+    {
+        if(viewing.contains(player)) return true;
+        return false;
+    }
+
+    public void removeViewing(String player)
+    {
+        this.viewing.remove(player);
+    }
+
+    public void addViewing(String player)
+    {
+        if(isViewing(player))
+        {
+            return;
+        }
+        viewing.add(player);
+    }
     public String getName() {
         return name;
     }
@@ -162,6 +184,26 @@ public class PlayerMenu implements Listener{
 
 
     }
+
+    @EventHandler
+    public void onClose(InventoryCloseEvent e)
+    {
+        if(this.viewing.contains(e.getPlayer().getName()))
+        {
+            if(e.getPlayer().getInventory().getName().equals(this.getName()))
+            {
+                this.viewing.remove(e.getPlayer().getName());
+            }
+
+
+        }
+
+
+    }
+
+
+
+
 
     public int getAvailableSpace()
     {

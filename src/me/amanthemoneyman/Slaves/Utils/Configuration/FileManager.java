@@ -22,7 +22,7 @@ public class FileManager {
             plugin.getDataFolder().mkdir();
         }
 
-        Utilities.debug("Loading server fileeeeeeeeeeeeeeeeeeeeeeees");
+        Utilities.debug("Loading server files");
         loadFiles();
 
 

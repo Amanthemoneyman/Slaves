@@ -1,5 +1,6 @@
 package me.amanthemoneyman.Slaves;
 
+import me.amanthemoneyman.Slaves.AuctionHouse.AuctionHouse;
 import me.amanthemoneyman.Slaves.SlavesClasses.Managers.SlaveTracker;
 import me.amanthemoneyman.Slaves.Utils.Configuration.FileManager;
 import me.amanthemoneyman.Slaves.Utils.InventoryAPI.PlayerMenuManager;
@@ -28,7 +29,6 @@ public class Slaves extends JavaPlugin {
     {
         loadClasses();
 
-
     }
 
     public void onDisable()
@@ -41,12 +41,21 @@ public class Slaves extends JavaPlugin {
     public SlaveTracker st; public SlaveTracker getSlaveTracker() { return st;}
     public FileManager fm; public FileManager getFileManager() { return fm; }
     public PlayerMenuManager pmm; public PlayerMenuManager getPlayerMM() { return pmm;}
+    public AuctionHouse ah; public AuctionHouse getAuctionHouse() { return ah;}
 
     private void loadClasses(){
         st = new SlaveTracker(this);
         fm = new FileManager(this);
         pmm = new PlayerMenuManager(this);
+        ah = new AuctionHouse(this);
 
+
+
+    }
+
+    public void removeAllSaves(String playerName)
+    {
+        ah.removeViewing(playerName);
 
 
     }
