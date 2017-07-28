@@ -26,6 +26,11 @@ public class Utilities {
 
     }
 
+    public static String getAuctionHouseName()
+    {
+        return ChatColor.translateAlternateColorCodes('&', "&8[&eAuctionHouse&8]");
+    }
+
     public static void error(String str)
     {
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', Slaves.prefix + "&4ERROR : " + str));
@@ -49,18 +54,6 @@ public class Utilities {
 
     }
 
-    public static boolean isValidInventorySize(int size)
-    {
-        if(size <= 55)
-        {
-            if(size+1/9 == 0)
-            {
-                return true;
-            }
-        }
-        return false;
-
-    }
 
     public static List<String> slaveToLore(Slave s) {
         /* Slave Lore Format???

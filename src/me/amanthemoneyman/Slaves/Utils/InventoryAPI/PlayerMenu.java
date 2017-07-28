@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by alexm on 7/21/2017.
@@ -26,6 +27,7 @@ public class PlayerMenu implements Listener{
     private int size;
     private Slaves plugin;
     private ArrayList<String> viewing;
+    private UUID menuID;
 
     public PlayerMenu(String name, Slaves plug)
     {
@@ -33,14 +35,21 @@ public class PlayerMenu implements Listener{
         this.name = ChatColor.translateAlternateColorCodes('&', name);
         this.menuButtons = new HashMap<Integer, MenuButton>();
         this.plugin = plug;
+        menuID = UUID.randomUUID();
+
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
 
 
     }
 
+    /**
+     *
+     * @param i - Size is the amount of rows that the inventory has, the max amount of rows is 6;
+     * @return
+     */
     public PlayerMenu size(int i)
     {
-        if(Utilities.isMultipleOf(8, i))
+        if(size <= 6)
         {
             this.size = size;
 
@@ -68,6 +77,16 @@ public class PlayerMenu implements Listener{
         }
         return this;
 
+    }
+
+    public Integer getRows()
+    {
+        return size;
+    }
+
+    public Integer getSlots()
+    {
+        return (size * 9)-1;
     }
 
     public boolean isViewing(String player)
@@ -110,10 +129,6 @@ public class PlayerMenu implements Listener{
         this.menuButtons = menuButtons;
 
     return this;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 
     public PlayerMenu removeButton(int pos)
@@ -210,6 +225,14 @@ public class PlayerMenu implements Listener{
 
 
         return this.getSize()-this.getMenuButtons().size();
+    }
+
+    public UUID getMenuID() {
+        return menuID;
+    }
+
+    public void setMenuID(UUID menuID) {
+        this.menuID = menuID;
     }
 
 

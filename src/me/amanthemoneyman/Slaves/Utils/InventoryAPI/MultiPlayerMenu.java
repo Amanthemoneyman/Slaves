@@ -1,7 +1,10 @@
 package me.amanthemoneyman.Slaves.Utils.InventoryAPI;
 
 import me.amanthemoneyman.Slaves.Slaves;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -11,13 +14,15 @@ public class MultiPlayerMenu {
 
     private Slaves plugin;
     private HashMap<Integer, PlayerMenu> menus;
-    private MenuButton forward;
-    private MenuButton backward;
+    private ArrayList<MenuButton> bottomrow;
 
 
     public MultiPlayerMenu(Slaves plugin)
     {
         this.plugin = plugin;
+        bottomrow = new ArrayList<MenuButton>();
+        createButtions();
+
 
 
     }
@@ -28,13 +33,9 @@ public class MultiPlayerMenu {
     return this;
     }
 
-    public MultiPlayerMenu addMenu(Integer pos, PlayerMenu menu)
+    public MultiPlayerMenu addMenu()
     {
-        if(menus.containsKey(pos))
-        {
-            return this;
-        }
-        menus.put(pos, menu);
+
 
         return this;
     }
@@ -49,5 +50,27 @@ public class MultiPlayerMenu {
 
 
     }
+
+    private boolean isLastMenu(Inventory e)
+    {
+
+    }
+
+    private void createButtions()
+    {
+        MenuButton backward;
+        MenuButton forward;
+        MenuButton filler;
+        forward = new MenuButton("&4Forward")
+
+        {
+            @Override
+            public void onClick(InventoryClickEvent e) {
+
+
+            }
+        };
+    }
+
 
 }

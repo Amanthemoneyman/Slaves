@@ -1,7 +1,7 @@
 package me.amanthemoneyman.Slaves.AuctionHouse;
 
 import me.amanthemoneyman.Slaves.Slaves;
-import me.amanthemoneyman.Slaves.Utils.InventoryAPI.PlayerMenu;
+import me.amanthemoneyman.Slaves.Utils.InventoryAPI.MultiPlayerMenu;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class AuctionHouse {
 
     private Slaves plugin;
-    private ArrayList<PlayerMenu> ahpages;
+    private MultiPlayerMenu ahmenu;
     private ArrayList<SlaveButton> slaves;
     private ArrayList<String> viewing;
     private int pagecount;
@@ -22,15 +22,15 @@ public class AuctionHouse {
     {
         this.plugin = plugin;
 
-        ahpages = new ArrayList<PlayerMenu>();
+        //ahmenu = new MultiPlayerMenu();
         slaves = new ArrayList<SlaveButton>();
         pagecount = 0;
 
 
     }
 
-    public ArrayList<PlayerMenu> getAhPages() {
-        return ahpages;
+    public MultiPlayerMenu getAhMenu() {
+        return ahmenu;
     }
 
     public ArrayList<SlaveButton> getSlaveButtons() {
@@ -50,18 +50,6 @@ public class AuctionHouse {
 
     public void updateAh()
     {
-        int i = 0;
-        for(SlaveButton s : this.slaves)
-        {
-            i++;
-
-            if(i == 45)
-            {
-
-
-            }
-
-        }
 
 
 

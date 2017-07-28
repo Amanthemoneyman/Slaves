@@ -1,6 +1,7 @@
 package me.amanthemoneyman.Slaves.Utils.InventoryAPI;
 
 import me.amanthemoneyman.Slaves.Slaves;
+import org.bukkit.inventory.Inventory;
 
 import java.util.ArrayList;
 
@@ -45,5 +46,14 @@ public class PlayerMenuManager {
         return false;
 
 
+    }
+
+    public PlayerMenu getPlayerMenu(Inventory e)
+    {
+        for(PlayerMenu pm : menus)
+        {
+           // if()
+        }
+        return null;
     }
 }
